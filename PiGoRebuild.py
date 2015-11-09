@@ -16,20 +16,45 @@ class PiGo:
         print "Hey, What's up, Hello!?!"
 
     def stop(self):
-        self.ismoving = False
-        while stop() != 1:
-            time.sleep(.1)
-            print "I'm sorry I was born a little glitchy"
+        self.status["ismoving"] = False
+        print "Whoa there!"
+        for x in range(3):
+            stop()
 
     def fwd(self):
         self.ismoving = True
-        while fwd() != 1:
-            time.sleep(.1)
-            print "My moving parts are very sore"
+        print "Let's get going!"
+        for x in range(3):
+            fwd()
 
     #####
     ##### COMPLEX METHODS
     #####
+
+    #def keyControl(self): #https://github.com/DexterInd/GoPiGo/blob/master/Software/Python/Examples/Basic_Robot_Control/basic_robot.py#
+        while True:
+            print "Enter the Command:",
+            a=raw_input()	# Fetch the input from the terminal
+            if a=='w':
+                fwd()	# Move forward
+            elif a=='a':
+                left()	# Turn left
+            elif a=='d':
+                right()	# Turn Right
+            elif a=='s':
+                bwd()	# Move back
+            elif a=='q':
+                stop()	# Stop
+            elif a=='z':
+                increase_speed()	# Increase speed
+            elif a=='x':
+                decrease_speed()	# Decrease speed
+            elif a=='e':
+                print "Exiting"		# Exit
+                sys.exit()
+            else:
+                print "Wrong Command, Please Enter Again"
+            time.sleep(.1)
 
     #####
     ##### MAIN APP STARTS HERE

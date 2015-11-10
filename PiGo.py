@@ -33,6 +33,8 @@ class PiGo:
     def keepGoing(self):
         if self.status["dist"] < STOP_DIST:
             return False
+        elif volt() > 14 or volt() < 6:
+            print "My voltage is out the safe operation range: " + str(volt())
         else:
             return True
 

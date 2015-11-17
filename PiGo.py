@@ -46,6 +46,17 @@ class PiGo:
     ##### COMPLEX METHODS
     #####
 
+    def safeDrive(self):
+        self.fwd()
+        while self.keepGoing():
+            self.checkDist()
+        self.stop()
+
+    def servoSweep(self):
+        for ang in range(20, 160, 5):
+            servo(ang)
+            time.sleep(.1)
+
     def dance(self):
         print "I just want to DANCE!"
         self.spin()
@@ -54,6 +65,14 @@ class PiGo:
         self.rturn()
         self.lturn()
         self.blink()
+
+    def strobe(self):
+        print "let's have a rager!"
+        for x in range(7):
+            led_on(1)
+            led_off(0)
+            led_off(1)
+            led_on(0)
 
     def keyControl(self): #https://github.com/DexterInd/GoPiGo/blob/master/Software/Python/Examples/Basic_Robot_Control/basic_robot.py#
         while True:
